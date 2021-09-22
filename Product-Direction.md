@@ -107,17 +107,17 @@ MySQL Documentation: [https://docs.oracle.com/cd/E17952\_01/mysql-8.0-en/index.h
 ## **Top Application Capabilities (name at least 5)**
 
 1. View available study spaces
-  1. filter by building, type, number of seats, quietness/loudness,
+     - filter by building, type, number of seats, quietness/loudness,
 2. Reserve a study space for a certain time
-  1. limited to maximum time limit (2 hrs)
+     - limited to maximum time limit (2 hrs)
 3. Modify / Delete reservations
 4. Misconduct reporting system
 5. User authentication
-  1. OAuth maybe? require hawk.iit.edu / iit.edu email
+     - OAuth maybe? require hawk.iit.edu / iit.edu email
 6. Check-in and check-out. Allow temporary leave for breaktime.
-  1. rules about length of break
-  2. use QR codes to scan
-  3. must arrive within certain time of reservation (~20min)
+     - rules about length of break
+     - use QR codes to scan
+     - must arrive within certain time of reservation (~20min)
 7. View busiest / least busy study times? -- metrics
 
 ## **Top Two to Three Scenarios**
