@@ -15,3 +15,5 @@ Thats is the only difference between the options. Our frontend app will make api
 
 ### Only Issue is...
 Creating our own domain will cost us money..
+
+Wait.. I found this: https://aws.amazon.com/getting-started/hands-on/build-react-app-amplify-graphql/
