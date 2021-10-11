@@ -16,3 +16,6 @@ Repo for IPRO group.
 
 ### Wireframes
 [Google Draw Doc](https://docs.google.com/drawings/d/1dkbX2JZekKzCA1wByZUsMOq4Ry2Q41TGI61boSocZrE/edit)
+
+### Mockup Prototype
+[Mockup Prototype](https://run.mockplus.cn/1NLEvThNsZrGQ8nG/index.html)
