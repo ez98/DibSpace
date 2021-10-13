@@ -22,3 +22,5 @@ Repo for IPRO group.
 
 ### Mockup Prototype
 [Mockup Prototype](https://run.mockplus.cn/1NLEvThNsZrGQ8nG/index.html)
+
+[Color Codes](https://docs.google.com/presentation/d/1XabJO_VueTQ_7KyRK89cSw4jioJ7h6Jr6xOkWd2ZAT4/edit?usp=sharing)
