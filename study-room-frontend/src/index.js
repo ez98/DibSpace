@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import StudyList from './components/StudyList';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <StudyList listTitle="Study Space List" />
   </React.StrictMode>,
   document.getElementById('root')
 );

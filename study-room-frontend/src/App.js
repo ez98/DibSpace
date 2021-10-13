@@ -4,19 +4,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
         <p>
-          Hello World. Welcome to Dibbit: The Study Room App.
+          Hello World. Welcome to Dibspace: The Study Space App.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
     </div>
   );
 }
