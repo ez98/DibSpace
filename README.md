@@ -1,6 +1,9 @@
 # IPRO-497-Study-Rooms
 Repo for IPRO group. 
 
+## Mid-Semester Demo Presentation
+[Google Slides](https://docs.google.com/presentation/d/1RdNzrvrdyeWtRgw43NC0CxMxVbY16VE-9N3TC4MJLo0/edit?usp=sharing)
+
 ## Tools
 
 ### Meeting Availability
@@ -19,3 +22,5 @@ Repo for IPRO group.
 
 ### Mockup Prototype
 [Mockup Prototype](https://run.mockplus.cn/1NLEvThNsZrGQ8nG/index.html)
+
+[Color Codes](https://docs.google.com/presentation/d/1XabJO_VueTQ_7KyRK89cSw4jioJ7h6Jr6xOkWd2ZAT4/edit?usp=sharing)
