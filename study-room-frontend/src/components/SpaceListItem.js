@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function SpaceListItem(props) {
 
   return <div>
-    <Link to={`${props.link}`}>
+    <Link to={`/space/${props.id}`}>
       <ListGroup.Item>
         {props.title}
       </ListGroup.Item>

@@ -1,4 +1,5 @@
-import { Container } from "react-bootstrap";
+import { Container , Row} from "react-bootstrap";
+import { useParams } from "react-router";
 import SpaceListItem from "./SpaceListItem";
 
 export default function Space(props) {

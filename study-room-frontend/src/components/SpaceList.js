@@ -11,7 +11,7 @@ export default function SpaceList(props) {
         </Row>
         <Row>
           <ListGroup>
-            {spaces.map((space) =>  <SpaceListItem title={space[1]} link={`/${space[0]}`}/>)}
+            {spaces.map((space) =>  <SpaceListItem key={space[0]} title={space[1]} id={space[0]}/>)}
           </ListGroup>
         </Row>
       </Container>
