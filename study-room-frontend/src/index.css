@@ -22,3 +22,7 @@ code {
   max-width: 100%;
   object-fit: contain;
 }
+
+.link {
+  text-decoration: none;
+}

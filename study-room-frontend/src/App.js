@@ -7,9 +7,12 @@ import Space from './components/Space';
 function App() {
   return (
     <div className="App">
-        <p>
-          Welcome to DibSpace: The Study Space App.
-        </p>
+      
+      <div>
+        <h1>DibSpace</h1>
+        <p>Find your place to study.</p>
+      </div>
+      
         <Router>
           <div>
             {/* <Header/> */}
@@ -22,7 +25,6 @@ function App() {
             </Switch>
           </div>
         </Router>
-
     </div>
   );
 }
