@@ -5,7 +5,7 @@ export default function SpaceListItem(props) {
 
   return <div>
     <Link to={`/space/${props.id}?building=${props.building}&seats=${props.seats}&noise=${props.noise}&image=${props.image}`} className="link">
-      <ListGroup.Item>
+      <ListGroup.Item className="mb-1">
         <Container>
           <Row>
             <Col>

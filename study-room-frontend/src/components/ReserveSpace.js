@@ -2,6 +2,34 @@ import React from "react";
 import { Button, Card, Col, Container, Form, Row} from "react-bootstrap"
 
 export default class ReserveSpace extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      status: []
+    };
+  }
+
+  componentDidMount() {
+    // call updateStatus method every 2 seconds
+    this.statusTimer = setInterval(
+      () => this.updateStatus(),
+      2000
+    )
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.statusTimer) // stop checking status
+  }
+
+  updateStatus() {
+    // TODO: read the space's availability status data from the database.
+    //  - probably use this.props.id
+    this.setState((state, props) => ({
+      status: "available" // TODO: replace dummy data with data from database
+    }));
+  }
+
   render() {
     return (
       <Container>
@@ -19,6 +47,7 @@ export default class ReserveSpace extends React.Component {
                             <Form.Control type="date"></Form.Control>
                           </Col>
                         </Form.Group>
+
                         <Form.Group as={Row} className="mb-3">
                           <Form.Label column sm={3} className="">Start Time</Form.Label>
                           <Col>
@@ -90,6 +119,7 @@ export default class ReserveSpace extends React.Component {
                             </Form.Group>
                           </Col>
                         </Form.Group>
+
                         <Form.Group className="mb-3">
                           <Button variant="primary" type="submit">
                             Submit
@@ -105,5 +135,4 @@ export default class ReserveSpace extends React.Component {
       </Container>
     )
   }
-  
 }
