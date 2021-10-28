@@ -36,16 +36,16 @@ export default class SpaceInfo extends React.Component {
       this.setState({status:data[i]['status']});
     });
   }
-  getRandStatus(){
-    const i = Math.floor(Math.random() * 15);
+//   getRandStatus(){
+//     const i = Math.floor(Math.random() * 15);
 
-    if ( i % 2 != 0 ) {
-      return "Available"
-    }
-    else{
-      return "Occupied"
-    }
-  }
+//     if ( i % 2 != 0 ) {
+//       return "Available"
+//     }
+//     else{
+//       return "Occupied"
+//     }
+//   }
 
 
   componentDidMount() {
