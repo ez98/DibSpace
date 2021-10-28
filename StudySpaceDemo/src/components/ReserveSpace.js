@@ -4,7 +4,7 @@ import { Button, Card, Col, Container, Form, Row} from "react-bootstrap"
 
 //we need to figure out how to pass in the space information that the user is choosing
 //into this component. We need that information since once we click on Submit
-//we can send a http POST request to our server, so that the reserveration can be logged and displayed to the user.
+//we can send a http POST request to our server, so that the reserveration can be logged and displayed to the user
 
 
 export default class ReserveSpace extends React.Component {
