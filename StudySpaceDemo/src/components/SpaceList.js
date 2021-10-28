@@ -3,12 +3,15 @@ import { Container, ListGroup, Row } from "react-bootstrap";
 import SpaceListItem from "./SpaceListItem";
 import {variables} from '../Variables.js'
 
-//when clicking on reserve room, this component activates. 
+//when clicking on reserve room at the homepage, this component activates. 
+
 //Ideally, I think we should list all available buildings first
-//let the user click on their choice of building, and then list study spaces
+//let the user click on their choice of building, and then list rooms available in that building or let user choose from a dropdown menu
+
+
 //The reason why I have to generate random seats/noise levels for the list displayed in the browser
 //is because I still don't know what study space the user is choosing.
-//I am only working with what Hannah created for the frontend
+//I am only working with what has been created for the front end as of now
 export default class SpaceList extends React.Component {
 
   constructor(props) {
@@ -65,9 +68,6 @@ export default class SpaceList extends React.Component {
     //                 [4, "Rettaliata", 6, "mid", "rettaliata.jpg"]];
 
     return (
-      //have to query study_space here and update table so that it also carries the building name
-      //when clicking on a building, it should display an option to choose a study space.
-      //once we choose the study space, send a GET http request to our API to display the study space information
 
       <Container>
         <Row>
