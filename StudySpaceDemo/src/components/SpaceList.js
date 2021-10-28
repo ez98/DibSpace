@@ -12,6 +12,9 @@ import {variables} from '../Variables.js'
 //The reason why I have to generate random seats/noise levels for the list displayed in the browser
 //is because I still don't know what study space the user is choosing.
 //I am only working with what has been created for the front end as of now
+
+//This same code can be used to generate rows of spaces available inside of a room.
+//Also can be used to list all buildings on the front page
 export default class SpaceList extends React.Component {
 
   constructor(props) {
