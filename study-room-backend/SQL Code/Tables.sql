@@ -40,7 +40,7 @@ CREATE TABLE `study_space` (
   `study_space_id` varchar(6) NOT NULL,
   `room_id` varchar(6) NOT NULL,
   `qr_code` varchar(45) NOT NULL,
-  `seats` tinyint NOT NULL,
+  `seats` int NOT NULL,
   `table` tinyint NOT NULL,
   `available` tinyint NOT NULL,
   PRIMARY KEY (`study_space_id`),
