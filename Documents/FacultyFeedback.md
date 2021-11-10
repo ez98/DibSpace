@@ -38,6 +38,11 @@
 - Review stories to ensure you have what you need to complete scenarios one and two
 
 ## Week 12 ##
+- Working on exporting demo data with inserts so individual students can recreate data
+- Working through database issues
+- Prepping deck for next week
+- Backlog light on stories make sure you update and add for stories related for 30th
+- You can recrate stories for your "next release" in backlog stories - you need to talk about them in the final presentation anyway
 
 ## Week 13 ##
 
