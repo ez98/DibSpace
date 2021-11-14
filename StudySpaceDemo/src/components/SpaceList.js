@@ -58,7 +58,15 @@ export default class SpaceList extends React.Component {
     }
   }
 
-  handleSelect = (evtKey, evt) => {
+  filterBuilding = (evtKey, evt) => {
+    console.log(evtKey);
+  }
+
+  filterSeats = (evtKey, evt) => {
+    console.log(evtKey);
+  }
+
+  filterNoise = (evtKey, evt) => {
     console.log(evtKey);
   }
 
@@ -80,7 +88,7 @@ export default class SpaceList extends React.Component {
         </Row>
         <Row>
           <Col>
-            <DropdownButton id="dropdown-basic-button" title="Building" onSelect={this.handleSelect}>
+            <DropdownButton id="dropdown-basic-button" title="Building" onSelect={this.filterBuilding}>
               <Dropdown.Item as="button" eventKey="Crown Hall">Crown Hall</Dropdown.Item>
               <Dropdown.Item as="button" eventKey="Hermann Hall">Hermann Hall</Dropdown.Item>
               <Dropdown.Item as="button" eventKey="Kaplan Institute">Kaplan Institute</Dropdown.Item>
@@ -89,7 +97,7 @@ export default class SpaceList extends React.Component {
             </DropdownButton>
           </Col>
           <Col>
-            <DropdownButton id="dropdown-basic-button" title="Seats" onSelect={this.handleSelect}>
+            <DropdownButton id="dropdown-basic-button" title="Seats" onSelect={this.filterSeats}>
               <Dropdown.Item as="button" eventKey="1">1</Dropdown.Item>
               <Dropdown.Item as="button" eventKey="2">2</Dropdown.Item>
               <Dropdown.Item as="button" eventKey="3">3</Dropdown.Item>
@@ -99,7 +107,7 @@ export default class SpaceList extends React.Component {
             </DropdownButton>
           </Col>
           <Col>
-            <DropdownButton id="dropdown-basic-button" title="Noise" onSelect={this.handleSelect}>
+            <DropdownButton id="dropdown-basic-button" title="Noise" onSelect={this.filterNoise}>
               <Dropdown.Item as="button" eventKey="Low">Low</Dropdown.Item>
               <Dropdown.Item as="button" eventKey="Mid">Mid</Dropdown.Item>
               <Dropdown.Item as="button" eventKey="High">High</Dropdown.Item>
