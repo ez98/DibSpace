@@ -30,6 +30,12 @@ export default class ReserveSpace extends React.Component {
   //   this.refreshList();
   // }
 
+  formSubmit = (event) => {
+    event.preventDefault()
+    var data = new FormData(event.target)
+    let formObject = Object.fromEntries(data.entries())
+    console.log(formObject)
+  }
 
   render() {
     return (
@@ -41,11 +47,11 @@ export default class ReserveSpace extends React.Component {
               <Row>
                 <Col>
                   <Card.Body>
-                      <Form>
+                      <Form onSubmit={this.formSubmit}>
                         <Form.Group as={Row} className="mb-3">
                           <Form.Label column sm={3} className="">Date</Form.Label>
                           <Col xs={6} sm={5} md={4} lg={3} xl={2}>
-                            <Form.Control type="date"></Form.Control>
+                            <Form.Control type="date" name="date"></Form.Control>
                           </Col>
                         </Form.Group>
 
@@ -56,7 +62,7 @@ export default class ReserveSpace extends React.Component {
                               <Col xs={4} md={3} lg={2}>
                               <Form.Group className="mb-3">
                                 <Form.Label>Hour</Form.Label>
-                                <Form.Select>
+                                <Form.Select name="start-hour">
                                   <option>12</option>
                                   <option>1</option>
                                   <option>2</option>
@@ -75,7 +81,7 @@ export default class ReserveSpace extends React.Component {
                               <Col xs={4} md={3} lg={2}>
                                   <Form.Group className="mb-3">
                                     <Form.Label>Minute</Form.Label>
-                                    <Form.Select>
+                                    <Form.Select name="start-minute">
                                       <option>00</option>
                                       <option>15</option>
                                       <option>30</option>
@@ -86,7 +92,7 @@ export default class ReserveSpace extends React.Component {
                               <Col xs={4} md={3} lg={2}>
                                 <Form.Group className="mb-3">
                                   <Form.Label>AM/PM</Form.Label>
-                                  <Form.Select>
+                                  <Form.Select name="am-pm">
                                     <option>AM</option>
                                     <option>PM</option>
                                   </Form.Select>
@@ -101,7 +107,7 @@ export default class ReserveSpace extends React.Component {
                             <Col xs={4} md={3} lg={2}>
                               <Form.Group className="mb-3">
                                 <Form.Label>Hours</Form.Label>
-                                <Form.Select>
+                                <Form.Select name="duration-hour">
                                   <option>0</option>
                                   <option>1</option>
                                   <option>2</option>
@@ -111,7 +117,7 @@ export default class ReserveSpace extends React.Component {
                           <Col xs={4} md={3} lg={2}>
                             <Form.Group className="mb-3">
                               <Form.Label>Minutes</Form.Label>
-                              <Form.Select>
+                              <Form.Select name="duration-minute">
                                 <option>00</option>
                                 <option>15</option>
                                 <option>30</option>

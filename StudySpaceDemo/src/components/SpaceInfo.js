@@ -65,7 +65,7 @@ export default class SpaceInfo extends React.Component {
                   <p className="text-left">Table: {this.state.table}</p>
                   <p className="text-left">Seats: {this.props.seats}</p>
                   <p className="text-left">Noise: {this.props.noise}</p>
-                  <p className="text-left">Status: {this.state.status}</p> 
+                  {/* <p className="text-left">Status: {this.state.status}</p>  */}
                 </Card.Text>
               </Card.Body>
             </Card>
