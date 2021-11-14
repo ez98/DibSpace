@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom';
 import SpaceList from './components/SpaceList';
 import Space from './components/Space';
-import Home  from './components/Home';
 
 import logo from './imgs/logo.jpeg'
 

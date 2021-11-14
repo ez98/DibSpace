@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, ListGroup, Row } from "react-bootstrap";
+import { Col, Container, Dropdown, DropdownButton, ListGroup, Row } from "react-bootstrap";
 import SpaceListItem from "./SpaceListItem";
 import {variables} from '../Variables.js'
 
@@ -63,8 +63,6 @@ export default class SpaceList extends React.Component {
       buildings,
     }=this.state;
 
-    
-
     // const spaces = [[1, "Galvin Library", 4, "low", "galvin-library.jpg"], 
     //                 [2, "MTCC", 2, "high","mtcc-train.jpg"], 
     //                 [3, "Rettaliata", 2, "mid", "rettaliata.jpg"],
@@ -75,6 +73,34 @@ export default class SpaceList extends React.Component {
       <Container>
         <Row>
           <h2>{this.props.listTitle}</h2>
+        </Row>
+        <Row>
+          <Col>
+            <DropdownButton id="dropdown-basic-button" title="Building">
+              <Dropdown.Item as="button">Crown Hall</Dropdown.Item>
+              <Dropdown.Item as="button">Hermann Hall</Dropdown.Item>
+              <Dropdown.Item as="button">Kaplan Institute</Dropdown.Item>
+              <Dropdown.Item as="button">McCormick Tribune Campus Center (MTCC)</Dropdown.Item>
+              <Dropdown.Item as="button">Stuart Building</Dropdown.Item>
+            </DropdownButton>
+          </Col>
+          <Col>
+            <DropdownButton id="dropdown-basic-button" title="Seats">
+              <Dropdown.Item as="button">1</Dropdown.Item>
+              <Dropdown.Item as="button">2</Dropdown.Item>
+              <Dropdown.Item as="button">3</Dropdown.Item>
+              <Dropdown.Item as="button">4</Dropdown.Item>
+              <Dropdown.Item as="button">5</Dropdown.Item>
+              <Dropdown.Item as="button">6</Dropdown.Item>
+            </DropdownButton>
+          </Col>
+          <Col>
+            <DropdownButton id="dropdown-basic-button" title="Noise">
+              <Dropdown.Item as="button">Low</Dropdown.Item>
+              <Dropdown.Item as="button">Mid</Dropdown.Item>
+              <Dropdown.Item as="button">High</Dropdown.Item>
+            </DropdownButton>
+          </Col>
         </Row>
         <Row>
           <ListGroup>
