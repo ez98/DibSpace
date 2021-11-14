@@ -89,7 +89,7 @@ export default class SpaceList extends React.Component {
             </DropdownButton>
           </Col>
           <Col>
-            <DropdownButton id="dropdown-basic-button" title="Seats">
+            <DropdownButton id="dropdown-basic-button" title="Seats" onSelect={this.handleSelect}>
               <Dropdown.Item as="button" eventKey="1">1</Dropdown.Item>
               <Dropdown.Item as="button" eventKey="2">2</Dropdown.Item>
               <Dropdown.Item as="button" eventKey="3">3</Dropdown.Item>
@@ -99,7 +99,7 @@ export default class SpaceList extends React.Component {
             </DropdownButton>
           </Col>
           <Col>
-            <DropdownButton id="dropdown-basic-button" title="Noise">
+            <DropdownButton id="dropdown-basic-button" title="Noise" onSelect={this.handleSelect}>
               <Dropdown.Item as="button" eventKey="Low">Low</Dropdown.Item>
               <Dropdown.Item as="button" eventKey="Mid">Mid</Dropdown.Item>
               <Dropdown.Item as="button" eventKey="High">High</Dropdown.Item>
