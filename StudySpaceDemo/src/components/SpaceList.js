@@ -58,6 +58,10 @@ export default class SpaceList extends React.Component {
     }
   }
 
+  handleSelect = (evtKey, evt) => {
+    console.log(evtKey);
+  }
+
   render() {
     const{
       buildings,
@@ -76,29 +80,29 @@ export default class SpaceList extends React.Component {
         </Row>
         <Row>
           <Col>
-            <DropdownButton id="dropdown-basic-button" title="Building">
-              <Dropdown.Item as="button">Crown Hall</Dropdown.Item>
-              <Dropdown.Item as="button">Hermann Hall</Dropdown.Item>
-              <Dropdown.Item as="button">Kaplan Institute</Dropdown.Item>
-              <Dropdown.Item as="button">McCormick Tribune Campus Center (MTCC)</Dropdown.Item>
-              <Dropdown.Item as="button">Stuart Building</Dropdown.Item>
+            <DropdownButton id="dropdown-basic-button" title="Building" onSelect={this.handleSelect}>
+              <Dropdown.Item as="button" eventKey="Crown Hall">Crown Hall</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="Hermann Hall">Hermann Hall</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="Kaplan Institute">Kaplan Institute</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="McCormick Tribune Campus Center (MTCC)">McCormick Tribune Campus Center (MTCC)</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="Stuart Building">Stuart Building</Dropdown.Item>
             </DropdownButton>
           </Col>
           <Col>
             <DropdownButton id="dropdown-basic-button" title="Seats">
-              <Dropdown.Item as="button">1</Dropdown.Item>
-              <Dropdown.Item as="button">2</Dropdown.Item>
-              <Dropdown.Item as="button">3</Dropdown.Item>
-              <Dropdown.Item as="button">4</Dropdown.Item>
-              <Dropdown.Item as="button">5</Dropdown.Item>
-              <Dropdown.Item as="button">6</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="1">1</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="2">2</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="3">3</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="4">4</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="5">5</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="6">6</Dropdown.Item>
             </DropdownButton>
           </Col>
           <Col>
             <DropdownButton id="dropdown-basic-button" title="Noise">
-              <Dropdown.Item as="button">Low</Dropdown.Item>
-              <Dropdown.Item as="button">Mid</Dropdown.Item>
-              <Dropdown.Item as="button">High</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="Low">Low</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="Mid">Mid</Dropdown.Item>
+              <Dropdown.Item as="button" eventKey="High">High</Dropdown.Item>
             </DropdownButton>
           </Col>
         </Row>
