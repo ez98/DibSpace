@@ -1,6 +1,9 @@
 # IPRO-497-Study-Rooms
 Repo for IPRO group. 
 
+## Dry Run Demo Presentation
+[Google Slides](https://docs.google.com/presentation/d/1TOTFCBL3G7TXxt6MCPeSBF5-xAOkEoE2gdDX-haq7jI/edit?usp=sharing)
+
 ## Mid-Semester Demo Presentation
 [Google Slides](https://docs.google.com/presentation/d/1RdNzrvrdyeWtRgw43NC0CxMxVbY16VE-9N3TC4MJLo0/edit?usp=sharing)
 
