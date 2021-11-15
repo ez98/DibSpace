@@ -124,7 +124,7 @@ MySQL Documentation: [https://docs.oracle.com/cd/E17952\_01/mysql-8.0-en/index.h
 
 ### **Your Scenario #1**
 
-Austin has an assignment due in a couple of days. He lives on campus, and his roommate has friends over to hang out. Austin opens the Study Reservation App to find available spots. He looks at spots in MTCC first because that is his favorite location to study. He finds an open study space and reserves it for 5:00pm. It is currently 4:45pm. He walks over and arrives a couple minutes early. There is no one in the study space. He sits down and waits until 5:00pm to check-in to his reservation.
+Austin has an assignment due in a couple of days. He lives on campus, and his roommate has friends over to hang out. Austin opens DibSpace to find available study spots. He looks for quiet spots in Kaplan. He finds an open study space and reserves it for 5:00pm. He walks over and arrives a couple minutes early. There is no one in the study space. He scans the QR code to check-in to his reservation.
 
 ### **Your Scenario #2**
 
