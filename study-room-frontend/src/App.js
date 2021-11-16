@@ -1,32 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SpaceList from './components/SpaceList';
-import Space from './components/Space';
+import "./App.css";
+import { routerRedux, Route, Switch, RouterProps } from "serpens/router";
+import React from "react";
+import { getRouterData } from "./common/router";
+import { ConfigProvider, Spin } from "antd";
+import { initialize, intl, connect } from "serpens";
+const { LocaleContextProvider } = intl;
+const { ConnectedRouter } = routerRedux;
 
-function App() {
+const RoutesFC = () => {
+  const routerData = getRouterData();
   return (
-    <div className="App">
-      
-      <div>
-        <h1>DibSpace</h1>
-        <p>Find your place to study.</p>
-      </div>
-      
-        <Router>
-          <div>
-            {/* <Header/> */}
-            <Switch>
-              {/* <Route path="/" component={ Welcome }/> */}
-              <Route exact path="/" component={ SpaceList }/>
-              <Route path="/find-study-space" component={ SpaceList }/>
-              <Route path="/space/:spaceId" component={ Space }/>
-              {/* <Route path="/reserve" component={ ReserveSpace }/> */}
-            </Switch>
-          </div>
-        </Router>
-    </div>
+    <ConfigProvider>
+      {/* <Header/> */}
+      <Switch>
+        {Object.entries(routerData).map(([k, v]) => {
+          return <Route path={k} exact={k === "/"} component={v.component} />;
+        })}
+      </Switch>
+    </ConfigProvider>
   );
-}
-
-export default App;
+};
+const wrapMemo = React.memo(RoutesFC);
+const wrapIntl = intl(wrapMemo);
+const connector = connect()(wrapIntl);
+const Routes = connector;
+export default ({ history }) => {
+  return (
+    <LocaleContextProvider>
+      <ConnectedRouter history={history}>
+        <Route component={Routes} />
+      </ConnectedRouter>
+    </LocaleContextProvider>
+  );
+};

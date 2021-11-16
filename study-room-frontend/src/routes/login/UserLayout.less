@@ -1,0 +1,69 @@
+@import '~antd/lib/style/themes/default.less';
+
+@footer-text-color: #f0f2f5;
+
+.container {
+	display: flex;
+	// flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	// overflow: auto;
+	background: @footer-text-color;
+}
+
+.content {
+	background: rgba(255, 255, 255, 0.618);
+	width: 454px;
+	min-height: 390px;
+	border-radius: 4px;
+	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.05);
+	padding: 0 36px;
+}
+
+.footerText {
+	color: @footer-text-color;
+}
+
+.version {
+	color: @footer-text-color;
+	&:hover {
+		color: rgba(0, 0, 0, 0.45);
+	}
+}
+
+@media (min-width: @screen-md-min) {
+	.container {
+		background-image: url('https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g3/M09/0B/0C/ChMlWF7hnFaIGTjIACvQt5A1ChIAAUofAPDfA8AK9DP225.jpg');
+		background-repeat: no-repeat;
+		// background-position: center 110px;
+		// background-image: url('../../assets/imgs/galvin-library.jpg');
+		background-size: 100% 100%;
+	}
+}
+@media (max-width: @screen-xs-min) {
+	.container {
+		background-image: url('https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g3/M09/0B/0C/ChMlWF7hnFaIGTjIACvQt5A1ChIAAUofAPDfA8AK9DP225.jpg');
+		background-repeat: no-repeat;
+		// background-position: center 110px;
+		// background-image: url('../../assets/imgs/galvin-library.jpg');
+		background-size: 100% 100%;
+	}
+	.content {
+		
+		width: calc(100vw - 18px);
+	}
+}
+
+.top {
+	margin-top: 54px;
+	margin-bottom: 54px;
+	.header {
+		text-align: center;
+		.logo {
+			height: 80px;
+			vertical-align: top;
+			margin-right: 16px;
+		}
+	}
+}

@@ -6,7 +6,7 @@ CREATE TABLE `building` (
   `close_time` time NOT NULL,
   `capacity` int NOT NULL,
   PRIMARY KEY (`building_tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `reservation` (
   `reservation_id` varchar(6) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE `reservation` (
   KEY `study_space_id_idx` (`study_space_id`),
   KEY `student_id_idx` (`student_id`),
   CONSTRAINT `student_id` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `room` (
   `room_id` varchar(6) NOT NULL,
@@ -27,22 +27,22 @@ CREATE TABLE `room` (
   PRIMARY KEY (`room_id`),
   KEY `building_tag_idx` (`building_tag`),
   CONSTRAINT `building_tag` FOREIGN KEY (`building_tag`) REFERENCES `building` (`building_tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `student` (
   `student_id` int NOT NULL,
   `email` varchar(45) NOT NULL,
   `student_name` varchar(45) NOT NULL,
   PRIMARY KEY (`student_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `study_space` (
   `study_space_id` varchar(6) NOT NULL,
   `room_id` varchar(6) NOT NULL,
   `qr_code` varchar(45) NOT NULL,
-  `seats` int NOT NULL,
+  `seats` tinyint NOT NULL,
   `table` tinyint NOT NULL,
   `available` tinyint NOT NULL,
   PRIMARY KEY (`study_space_id`),
   KEY `room_id_idx` (`room_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

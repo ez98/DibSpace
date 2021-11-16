@@ -1,0 +1,69 @@
+html,
+body,
+:global(#root) {
+	height: 100%;
+}
+
+:global(.ant-layout) {
+	min-height: 100%;
+}
+
+canvas {
+	display: block;
+}
+
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.globalSpin {
+	width: 100%;
+	margin: 40px 0 !important;
+}
+
+a {
+	color: #056be4;
+}
+
+@font-face {
+	font-family: 'PingFangSC-Regular';
+	src: url('/PingFangRegular.ttf');
+}
+
+@font-face {
+	font-family: 'DIN-Black';
+	src: url('/DIN-Black.otf');
+}
+
+// :global(.ant-btn-link) {
+// 	color: #056be4 !important;
+// }
+
+// :global(.ant-btn-primary) {
+// 	background-color: #056be4 !important;
+// 	border-color: #056be4 !important;
+// }
+
+// :global {
+// 	// temp fix for https://github.com/ant-design/ant-design/commit/a1fafb5b727b62cb0be29ce6e9eca8f579d4f8b7
+// 	.ant-spin-container {
+// 		overflow: visible !important;
+// 	}
+// }
+
+:global(.ant-popover-buttons > .ant-btn-primary) {
+	width: 60px;
+	height: 24px;
+	border-radius: 4px;
+}
+
+:global(.ant-modal-confirm-btns > .ant-btn-primary) {
+	// width: 66px;
+	width: 80px;
+	height: 32px;
+	border-radius: 4px;
+	text-align: center;
+	// padding: 0 10px;
+}
