@@ -1,7 +1,7 @@
 import { useParams, useLocation } from "react-router";
 import ReserveSpace from "./ReserveSpace";
 import SpaceInfo from "./SpaceInfo";
-import { Button, Card, Col, Container, Form, Row} from "react-bootstrap"
+import { Container, Row} from "react-bootstrap"
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -25,7 +25,8 @@ export default function Space(props) {
           image={query.get("image")}/>
       </Row>
       <Row>
-      <ReserveSpace className="mb-3"/>
+      <ReserveSpace className="mb-3"
+        spaceId={query.get("building")}/>
       </Row>
     </Container>
   </div>

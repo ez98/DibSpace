@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Container, Dropdown, DropdownButton, ListGroup, Row } from "react-bootstrap";
 import SpaceListItem from "./SpaceListItem";
-import {variables} from '../Variables.js'
+import { variables } from '../Variables.js'
 
 //when clicking on reserve room at the homepage, this component activates. 
 
