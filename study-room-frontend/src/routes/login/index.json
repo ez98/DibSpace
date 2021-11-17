@@ -1,0 +1,92 @@
+{
+	"username": {
+		"zh-CN": "用户名",
+		"en-US": "Sutdy Name",
+		"ru-RU": "Имя пользователя"
+	},
+	"password": {
+		"zh-CN": "密    码",
+		"en-US": "Password",
+		"ru-RU": "пароль"
+	},
+	"code": {
+		"zh-CN": "验证码",
+		"en-US": "Verification code",
+		"ru-RU": "код проверки"
+	},
+	"sign_in": {
+		"zh-CN": "登录",
+		"en-US": "Log in",
+		"ru-RU": "вход"
+	},
+	"sign_out": {
+		"zh-CN": "退出登录",
+		"en-US": "Log out",
+		"ru-RU": "выход из системы"
+	},
+	"change_password": {
+		"zh-CN": "修改密码",
+		"en-US": "Change password",
+		"ru-RU": "Изменить пароль"
+	},
+	"please_enter_username": {
+		"zh-CN": "请输入用户名",
+		"en-US": "Input study name",
+		"ru-RU": "Введите имя пользователя"
+	},
+	"please_enter_password": {
+		"zh-CN": "请输入密码",
+		"en-US": "Input password",
+		"ru-RU": "Введите пароль"
+	},
+	"please_enter_verification_code": {
+		"zh-CN": "请输入验证码",
+		"en-US": "Input verification code",
+		"ru-RU": "Введите код проверки"
+	},
+	"the_verification_code_is_wrong": {
+		"zh-CN": "验证码错误，请重新输入。",
+		"en-US": "Incorrect verification code",
+		"ru-RU": "Ошибка проверки кода, пожалуйста, введите его снова."
+	},
+	"captcha_failed_to_load": {
+		"zh-CN": "验证码加载失败，请重试。",
+		"en-US": "Captcha failed to load, please refresh.",
+		"ru-RU": "Ошибка загрузки контрольного кода, повторите попытку."
+	},
+	"wrong_password": {
+		"zh-CN": "密码错误，请重新输入。",
+		"en-US": "Incorrect password.",
+		"ru-RU": "ошибка пароля, повторите ввод."
+	},
+	"refresh": {
+		"zh-CN": "刷新验证码",
+		"en-US": "Refresh.",
+		"ru-RU": "Обновить код проверки"
+	},
+	"authentication_failed": {
+		"zh-CN": "用户验证失败",
+		"en-US": "User authentication failed.",
+		"ru-RU": "Ошибка проверки пользователя"
+	},
+	"account": {
+		"zh-CN": "租户(Account)",
+		"en-US": "Account",
+		"ru-RU": "счёт"
+	},
+	"no_empty": {
+		"zh-CN": "不能为空",
+		"en-US": "Cannot be empty",
+		"ru-RU": "не может быть пустым"
+	},
+	"enter_system": {
+		"zh-CN": "进入系统",
+		"en-US": "Enter the system",
+		"ru-RU": "войти в систему"
+	},
+	"return_login": {
+		"zh-CN": "返回登录",
+		"en-US": "Return to login",
+		"ru-RU": "обратный вход"
+	}
+}

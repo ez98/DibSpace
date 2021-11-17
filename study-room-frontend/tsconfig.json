@@ -1,0 +1,79 @@
+{
+	"compilerOptions": {
+		"experimentalDecorators": true,
+		"outDir": "./dist/",
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"module": "commonjs",
+		"target": "es6",
+		"downlevelIteration": true,
+		"jsx": "react",
+		// 解析 .json 文件
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"allowJs": true,
+		"lib": [
+			"es6",
+			"es2019",
+			"es2015",
+			"dom"
+		],
+		// "noImplicitThis": true,
+		// "strictNullChecks": false,
+		// "strictFunctionTypes": true,
+		// "noEmit": true,
+		// "forceConsistentCasingInFileNames": true,
+		// "lib": ["dom", "es5", "es2015"],
+		// "outDir": "./dist/",
+		// "sourceMap": true,
+		// "noImplicitAny": true,
+		// "strictNullChecks": true,
+		// "module": "commonjs",
+		// "target": "es5",
+		// "jsx": "react",
+		// "noUnusedParameters": true,
+		// "noUnusedLocals": true,
+		// "moduleResolution": "node",
+		// "esModuleInterop": true,
+		// "experimentalDecorators": true,
+		// "skipLibCheck": true,
+		"types": [
+			"react",
+			"react-dom",
+			"node",
+			"react-redux",
+			"lodash"
+		],
+		// "typeRoots": ["typings/*"],
+		"baseUrl": ".",
+		"paths": {
+			"root/*": [
+				"*"
+			],
+			"components/*": [
+				"src/components/*"
+			],
+			"assets/*": [
+				"src/assets/*"
+			],
+			"services/*": [
+				"src/services/*"
+			],
+			"utils/*": [
+				"src/utils/*"
+			],
+			"models/*": [
+				"src/models/*"
+			],
+			"@/*": [
+				"src/*"
+			]
+		}
+	},
+	// "include": ["node_modules/dva/*"]
+	"exclude": [
+		"node_modules",
+		"dist",
+		"webpack"
+	]
+}
