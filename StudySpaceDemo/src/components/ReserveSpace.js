@@ -9,19 +9,6 @@ import { variables } from '../Variables.js'
 
 export default class ReserveSpace extends React.Component {
 
-  // refreshList(){
-  //   fetch(variables.API_URL + 'studyspace')
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     this.setState({status: data[0]['status']})
-  //   })
-  // }
-
-  // componentDidMount() {
-  //   // call updateStatus method every 2 seconds
-  //   this.refreshList();
-  // }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -31,38 +18,86 @@ export default class ReserveSpace extends React.Component {
       startMinute: "",
       startAmPm: "",
       durationHour: "",
-      durationMinute: ""
+      durationMinute: "",
+      studentID: []
     }
   }
+  componentDidMount() {
+    this.refreshList();
+  }
+  
+  parseData(data){
+    var lst = [];
+    for(var i = 0; i < data.length; i++){
+      lst.push(data[i].student_id)
+    }
+    return lst;
+  }
+  
+  refreshList(){
+    fetch(variables.API_URL + 'student')
+    .then(response => response.json())
+    .then(data => {
+      this.setState({studentID:this.parseData(data)})
+    });
+  }
+
+
+
+  getEndTime(hour, min, durationHour, durationMin, amPM){ //fix this function so that it handles when a user chooses 12PM and duration is an hour or greater. Must go to 1PM not 13PM. 
+    var hourTotal = hour + durationHour;
+    var minTotal = 0;
+
+    if(min + durationMin === 60){ //means that the minutes from the chosen reservation time and the minutes from the duration time equal an hour. Therefore, add an hour to hourTotal
+      hourTotal += 1;
+    }
+    else if(min + durationMin > 60){ //same as above, except that now that we calculate new minute total if sum goes over 60. 
+      hourTotal += 1;
+      minTotal = (min + durationMin) - 60;
+    }
+    else{
+      minTotal = min + durationMin; //otherwise, just add them
+    }
+    if (minTotal === 0){ // this if statement is just to handle when minTotal is 0. For formatting reasons basically. Added an extra 0.
+      return hourTotal.toString() + ":" + minTotal.toString() + "0" + amPM;
+    }
+    return hourTotal.toString() + ":" + minTotal.toString() + amPM;
+  }
+
+  postReservation(){
+    fetch(variables.API_URL+'reservation',{
+      method: 'POST',
+      headers:{
+        'Accept':'application/json',
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify({
+        reservation_id: Math.floor(Math.random() * 90 + 10).toString(), //generation a random two digit number
+        student_id: this.state.studentID[Math.floor(Math.random() * this.state.studentID.length)], //choosing a random student ID from the DB. This needs to be fixed in such a way that the student ID from the student submitting the reservation is filled in here.
+        study_space_id: "SS" + "-" + Math.floor(Math.random() * 90 + 10).toString(), //have to figure out how to pass in the current space id present on the web app when the user presses submit. For now, generating a random space ID.
+        //the study space ID can be retrieved if we let the user choose a space ID from their choice of building. Once they choose a space ID, we pass it in here.
+        start_time: this.state.startHour + ":" + this.state.startMinute + " " + this.state.startAmPm,
+        end_time: this.getEndTime(Number(this.state.startHour), Number(this.state.startMinute), Number(this.state.durationHour), Number(this.state.durationMinute), this.state.startAmPm) //calculate end time with the getEndTime function
+      })
+    })
+    .then(res=>res.json())
+    .then((result) =>{
+      alert(result);
+      this.refreshList();
+    },(error) =>{
+      alert(error);
+    })
+  }
+
+
 
   handleChange = (event) => {
     this.state = {
       ...this.state,
       [event.target.name]: event.target.value
     }
-    // console.log(this.state); 
   }
   
-  formSubmit = (event) => {
-    event.preventDefault()
-    console.log(this.state);
-    // const response = fetch(variables.API_URL + 'reservation', {
-    //   method: 'PUT',
-    //   body: JSON.stringify({
-    //     this..state.id,
-    //     this.state.date,
-    //     this.state.startHour,
-    //     this.state.startMinute,
-    //     this.state.startAmPm,
-    //     this.state.durationHour,
-    //     this.state.durationMinute
-    //   }),
-    //   headers: {
-        
-    //   }
-    // });
-  }
-
   render() {
     return (
       <Container>
@@ -73,14 +108,6 @@ export default class ReserveSpace extends React.Component {
               <Row>
                 <Col>
                   <Card.Body>
-                      <Form onSubmit={this.formSubmit}>
-                        <Form.Group as={Row} className="mb-3">
-                          <Form.Label column sm={3} className="">Date</Form.Label>
-                          <Col xs={6} sm={5} md={4} lg={3} xl={2}>
-                            <Form.Control type="date" name="date" onChange={this.handleChange}></Form.Control>
-                          </Col>
-                        </Form.Group>
-
                         <Form.Group as={Row} className="mb-3">
                           <Form.Label column sm={3} className="">Start Time</Form.Label>
                           <Col>
@@ -154,11 +181,10 @@ export default class ReserveSpace extends React.Component {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                          <Button variant="primary" type="submit">
+                          <Button variant="primary" type="submit" onClick={()=>this.postReservation()}>
                             Submit
                           </Button>
                         </Form.Group>
-                      </Form>
                   </Card.Body>
                 </Col>
               </Row>

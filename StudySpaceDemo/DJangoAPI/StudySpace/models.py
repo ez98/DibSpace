@@ -31,10 +31,12 @@ class StudySpace(models.Model):
 
 class Reservation(models.Model):
     reservation_id = models.CharField(max_length=7)
-    student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
-    study_space_id = models.ForeignKey(StudySpace, on_delete=models.CASCADE)
-    start_time = models.TimeField(auto_now_add=False)
-    end_time = models.TimeField(auto_now_add=False)
+    student_id = models.ForeignKey(Student, on_delete=models.CASCADE) #foreign key may be causing errors
+    #student_id = models.CharField(max_length=12)
+    #study_space_id = models.ForeignKey(StudySpace, on_delete=models.CASCADE)
+    study_space_id = models.CharField(max_length=12,default ='test')
+    start_time = models.CharField(max_length=10)
+    end_time = models.CharField(max_length=10)
 
     #     {
     #     "building_tag": "WH",

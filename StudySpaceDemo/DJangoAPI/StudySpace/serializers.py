@@ -15,7 +15,7 @@ class StudentSerializer(serializers.ModelSerializer):
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
-        fields = ('room_id', 'building_tag', 'availability')
+        fields = ('room_id', 'building_tag', 'reservation_id')
 
 class StudySpaceSerializer(serializers.ModelSerializer):
     class Meta:

@@ -86,7 +86,7 @@ def reservationApi(request, id=0):
         if reservation_serializer.is_valid():
             reservation_serializer.save()
             return JsonResponse("Add Successfully", safe=False)
-        return JsonResponse("Failed to Add", safe=False)
+        return reservation_data
 
     elif request.method == 'PUT':
         reservation_data = JSONParser().parse(request)

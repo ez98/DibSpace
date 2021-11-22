@@ -62,7 +62,7 @@ export default class SpaceInfo extends React.Component {
                 <Card.Text>
                   <p className="text-left">Space Id: {this.state.spaceid}</p>
                   <p className="text-left">Building: {this.props.building} </p>
-                  <p className="text-left">Table: {this.state.table}</p>
+                  <p className="text-left">Table: {this.state.table === true ? 'true' : 'false'}</p>
                   <p className="text-left">Seats: {this.props.seats}</p>
                   <p className="text-left">Noise: {this.props.noise}</p>
                   {/* <p className="text-left">Status: {this.state.status}</p>  */}
