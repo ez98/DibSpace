@@ -1,32 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SpaceList from './components/SpaceList';
-import Space from './components/Space';
+import "./App.css";
+import { routerRedux, Route, Switch } from "serpens/router";
+import React from "react";
+import { getRouterData } from "./common/router";
+import { ConfigProvider } from "antd";
+import { intl, connect } from "serpens";
+import { Container } from "react-bootstrap";
 
-function App() {
+import Header from "components/GlobalHeader";
+const { LocaleContextProvider } = intl;
+const { ConnectedRouter } = routerRedux;
+const RoutesFC = (props) => {
+  const routerData = getRouterData();
+  const {
+    location: { pathname },
+  } = props;
   return (
-    <div className="App">
-      
-      <div>
-        <h1>DibSpace</h1>
-        <p>Find your place to study.</p>
-      </div>
-      
-        <Router>
-          <div>
-            {/* <Header/> */}
-            <Switch>
-              {/* <Route path="/" component={ Welcome }/> */}
-              <Route exact path="/" component={ SpaceList }/>
-              <Route path="/find-study-space" component={ SpaceList }/>
-              <Route path="/space/:spaceId" component={ Space }/>
-              {/* <Route path="/reserve" component={ ReserveSpace }/> */}
-            </Switch>
-          </div>
-        </Router>
-    </div>
-  );
-}
+    <ConfigProvider>
+      {pathname.includes("user") ? null : (
+        <Container>
+          <Header />
+        </Container>
+      )}
 
-export default App;
+      <Switch>
+        {Object.entries(routerData).map(([k, v]) => {
+          return (
+            <Route key={k} path={k} exact={k === "/"} component={v.component} />
+          );
+        })}
+      </Switch>
+    </ConfigProvider>
+  );
+};
+const wrapMemo = React.memo(RoutesFC);
+const wrapIntl = intl(wrapMemo);
+const connector = connect()(wrapIntl);
+const Routes = connector;
+export default ({ history }) => {
+  return (
+    <LocaleContextProvider>
+      <ConnectedRouter history={history}>
+        <Route component={Routes} />
+      </ConnectedRouter>
+    </LocaleContextProvider>
+  );
+};

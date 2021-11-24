@@ -25,11 +25,18 @@ SECRET_KEY = 'django-insecure-i_d04ld(h@em6vdm()i582)=z(8l^w8oagd4u-lkl8vls&qb-_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25
+# EMAIL_USE_SSL = True
+EMAIL_HOST_USER ='1017603000@qq.com'
+EMAIL_HOST_PASSWORD = 'nuixzcafwjbybfea'
+EMIAL_USE_TLS = False
+EMAIL_FROM ='1017603000@qq.com'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,11 +58,24 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'StudySpace.middleware.authmiddle.SimpleMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+WHITE_URL=['/send-email','/student','/studyspace','/user-info']
 ROOT_URLCONF = 'DjangoAPI.urls'
-
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://119.91.19.57:6379",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CONNECTION_POOL_KWARGS": {"max_connections": 100, 'decode_responses': False},
+            "PASSWORD":'myredis'
+        },
+        # 前缀
+        "KEY_PREFIX": "DibSpace"
+    }
+}
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -86,9 +106,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'studyspace',
-        'USER': 'root',
-        'PASSWORD': 'iPrO!G25',
-        'HOST': 'localhost',
+        'USER': 'studyspace',
+        'PASSWORD': 'skmWK4H8nskhAAcd',
+        'HOST': '119.91.19.57',
         'PORT': '3306'
     }
 }

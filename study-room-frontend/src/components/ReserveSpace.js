@@ -1,34 +1,77 @@
 import React from "react";
-import { Button, Card, Col, Container, Form, Row} from "react-bootstrap"
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
+import { connect } from "serpens";
+import moment from "moment";
+import { notification } from "antd";
+import { DatePicker, TimePicker } from "antd";
+import { routerRedux } from "serpens/router";
+import { stringify } from "qs";
 
+@connect()
 export default class ReserveSpace extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      status: []
+      spaceId: props.spaceId,
+      reserveDate: moment().format("YYYY-MM-DD"),
+      reserveHour: moment().get('h'),
+      reserveMinute: moment().add('minutes',15).get('minutes'),
+      studyHour: 1,
+      studyMinutes: "00",
     };
   }
 
   componentDidMount() {
     // call updateStatus method every 2 seconds
-    this.statusTimer = setInterval(
-      () => this.updateStatus(),
-      2000
-    )
+    // this.statusTimer = setInterval(() => this.updateStatus(), 2000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.statusTimer) // stop checking status
+    clearInterval(this.statusTimer); // stop checking status
   }
 
   updateStatus() {
     // TODO: read the space's availability status data from the database.
     //  - probably use this.props.id
-    this.setState((state, props) => ({
-      status: "available" // TODO: replace dummy data with data from database
-    }));
   }
+  disabledDate = (current) => {
+    return current && current < moment().startOf("d");
+  };
+  disabledTime = (current) => {
+    const hourList = [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+    ];
+    return hourList.slice(0, Number(moment().get("h")));
+  };
+  disabledDate = current => {
+		return (
+			current && current <moment().add('minutes',10)
+
+		)
+	}
 
   render() {
     return (
@@ -36,96 +79,170 @@ export default class ReserveSpace extends React.Component {
         <Row>
           <Col>
             <Card className="mb-3">
-              <Row><Card.Title>Reserve This Space</Card.Title></Row>
               <Row>
                 <Col>
                   <Card.Body>
-                      <Form>
-                        <Form.Group as={Row} className="mb-3">
-                          <Form.Label column sm={3} className="">Date</Form.Label>
-                          <Col xs={6} sm={5} md={4} lg={3} xl={2}>
-                            <Form.Control type="date"></Form.Control>
-                          </Col>
-                        </Form.Group>
+                    <Card.Title>Reserve This Space</Card.Title>
+                    <Form>
+                      <Form.Group as={Row} className="mb-3">
+                        <Form.Label
+                          column
+                          sm={3}
+                          className="mb-3"
+                          controlId="FormOfDate"
+                        >
+                          Date
+                        </Form.Label>
+                        <Col xs={8} sm={6} md={5} lg={4} xl={3}>
+                          <DatePicker
+                            value={moment(this.state.reserveDate)}
+                            style={{ width: "100%" }}
+                            value={moment(this.state.reserveDate)}
+                            disabledDate={this.disabledDate}
+                            onChange={(val) => {
+                              if (val) {
+                                this.setState({
+                                  reserveDate: moment(val).format("YYYY-MM-DD"),
+                                });
+                              }
+                            }}
+                          />
+                        </Col>
+                      </Form.Group>
 
-                        <Form.Group as={Row} className="mb-3">
-                          <Form.Label column sm={3} className="">Start Time</Form.Label>
-                          <Col>
-                            <Row>
-                              <Col xs={4} md={3} lg={2}>
-                              <Form.Group className="mb-3">
-                                <Form.Label>Hour</Form.Label>
-                                <Form.Select>
-                                  <option>12</option>
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
-                                  <option>6</option>
-                                  <option>7</option>
-                                  <option>8</option>
-                                  <option>9</option>
-                                  <option>10</option>
-                                  <option>11</option>
-                                </Form.Select>
-                                </Form.Group>
-                              </Col>
-                              <Col xs={4} md={3} lg={2}>
-                                  <Form.Group className="mb-3">
-                                    <Form.Label>Minute</Form.Label>
-                                    <Form.Select>
-                                      <option>00</option>
-                                      <option>15</option>
-                                      <option>30</option>
-                                      <option>45</option>
-                                    </Form.Select>
-                                  </Form.Group>
-                              </Col>
-                              <Col xs={4} md={3} lg={2}>
-                                <Form.Group className="mb-3">
-                                  <Form.Label>AM/PM</Form.Label>
-                                  <Form.Select>
-                                    <option>AM</option>
-                                    <option>PM</option>
-                                  </Form.Select>
-                                  </Form.Group>
-                              </Col>
-                            </Row>
-                          </Col>
-                        </Form.Group>
+                      <Form.Group as={Row} className="mb-3">
+                        <Form.Label column sm={3} className="">
+                          Start Time
+                        </Form.Label>
+                        <Col xs={8} sm={6} md={5} lg={4} xl={3}>
+                          <TimePicker
+                            style={{ width: "100%" }}
+                            value={moment().set('h',this.state.reserveHour).set('minutes',this.state.reserveMinute)}
+                            disabledHours={this.disabledTime}
+                            disabledDate={this.disabledDate}
+                            showNow={false}
                             
-                        <Form.Group as={Row} className="mb-3">
-                          <Form.Label column sm={3} className="">Study Session Length</Form.Label>
-                            <Col xs={4} md={3} lg={2}>
-                              <Form.Group className="mb-3">
-                                <Form.Label>Hours</Form.Label>
-                                <Form.Select>
-                                  <option>0</option>
-                                  <option>1</option>
-                                  <option>2</option>
-                                </Form.Select>
-                              </Form.Group>
-                            </Col>
-                          <Col xs={4} md={3} lg={2}>
-                            <Form.Group className="mb-3">
-                              <Form.Label>Minutes</Form.Label>
-                              <Form.Select>
-                                <option>00</option>
-                                <option>15</option>
-                                <option>30</option>
-                                <option>45</option>
-                              </Form.Select>
-                            </Form.Group>
-                          </Col>
-                        </Form.Group>
+                            onChange={(val) => {
+                              if (val) {
+                                const reserveHour = val.get("h");
+                                const reserveMinute = val.get("minute");
+                                
+                                this.setState({
+                                  reserveHour,
+                                  reserveMinute,
+                                });
+                              }
+                            }}
+                          />
+                        </Col>
+                      </Form.Group>
 
-                        <Form.Group className="mb-3">
-                          <Button variant="primary" type="submit">
-                            Submit
-                          </Button>
-                        </Form.Group>
-                      </Form>
+                      <Form.Group as={Row} className="mb-3">
+                        <Form.Label column sm={3} className="">
+                          Study Session Length
+                        </Form.Label>
+                        <Col lg={4} xs={6}>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Hours</Form.Label>
+                            <Form.Select
+                              value={this.state.studyHour}
+                              onChange={(val) => {
+                                this.setState({
+                                  studyHour: val.target.value,
+                                });
+                              }}
+                            >
+                              <option>0</option>
+                              <option>1</option>
+                              <option>2</option>
+                            </Form.Select>
+                          </Form.Group>
+                        </Col>
+                        <Col lg={4} xs={6}>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Minutes</Form.Label>
+                            <Form.Select
+                              value={this.state.studyMinutes}
+                              onChange={(val) => {
+                                this.setState({
+                                  studyMinutes: val.target.value,
+                                });
+                              }}
+                            >
+                              <option>00</option>
+                              <option>15</option>
+                              <option>30</option>
+                              <option>45</option>
+                            </Form.Select>
+                          </Form.Group>
+                        </Col>
+                      </Form.Group>
+
+                      <Form.Group
+                        className="mb-3"
+                        style={{ textAlign: "center" }}
+                      >
+                        <Button
+                          variant="primary"
+                          onClick={async () => {
+                            const start_time = `${this.state.reserveDate} ${this.state.reserveHour}:${this.state.reserveMinute}:00`;
+                            const end_time = moment(start_time)
+                              .add(this.state.studyHour, "hours")
+                              .add(this.state.studyMinutes, "minutes");
+                            if (start_time - moment() > 10) {
+                              await this.props.dispatch({
+                                type: "reserve/save",
+                                payload: {
+                                  reserveForm: this.state,
+                                },
+                              });
+                              this.props
+                                .dispatch({
+                                  type: "reserve/setReserveInfo",
+                                })
+                                .then((res) => {
+                                  const {
+                                    state,
+                                    message,
+                                    study_space_data,
+                                    reserve_data,
+                                  } = res;
+                                  if (state) {
+                                    notification.success({
+                                      type: "success",
+                                      message,
+                                    });
+                                    this.props.dispatch(
+                                      routerRedux.push({
+                                        pathname: `/reserve-success?study_space_data=${stringify(
+                                          {
+                                            ...study_space_data,
+                                            ...reserve_data,
+                                          }
+                                        )}`,
+                                      })
+                                    );
+                                  } else {
+                                    notification.error({
+                                      type: "error",
+                                      message,
+                                    });
+                                  }
+                                });
+                            } else {
+                              notification.warning({
+                                type: "warning",
+                                message: "Make an appointment to failure",
+                                description:
+                                  "The reservation time is less than the current time. Please make a new reservation",
+                              });
+                            }
+                          }}
+                        >
+                          Submit
+                        </Button>
+                      </Form.Group>
+                    </Form>
                   </Card.Body>
                 </Col>
               </Row>
@@ -133,6 +250,6 @@ export default class ReserveSpace extends React.Component {
           </Col>
         </Row>
       </Container>
-    )
+    );
   }
 }

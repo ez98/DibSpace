@@ -1,3 +1,0 @@
-reservation_id,student_id,study_space_id,start_time,end_time
-001,13579,001,10:00:00,12:00:00
-002,24680,003,13:00:00,15:00:00
