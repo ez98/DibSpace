@@ -58,11 +58,59 @@ export default class ReserveSpace extends React.Component {
     else{
       minTotal = min + durationMin; //otherwise, just add them
     }
+
+    if (hourTotal >= 12){
+      amPM = "pm";
+    }
+
+    switch(hourTotal) {
+      case 13:
+        hourTotal = 1;
+        break;
+      case 14:
+        hourTotal = 2;
+        break;
+      case 15:
+        hourTotal = 3;
+        break;
+      case 16:
+        hourTotal = 4;
+        break;
+      case 17:
+        hourTotal = 5;
+        break;          
+      case 18:
+        hourTotal = 6;
+        break;
+      case 19:
+        hourTotal = 7;
+        break;
+      case 20:
+        hourTotal = 8;
+        break;
+      case 21:
+        hourTotal = 9;
+        break;
+      case 22:
+        hourTotal = 10;
+        break;
+      case 23:
+        hourTotal = 11;
+        break;
+      case 24:
+        hourTotal = 12;
+        break;  
+    }
+    
     if (minTotal === 0){ // this if statement is just to handle when minTotal is 0. For formatting reasons basically. Added an extra 0.
       return hourTotal.toString() + ":" + minTotal.toString() + "0" + amPM;
     }
+    else if (minTotal < 10){
+      return hourTotal.toString() + ":" + "0" + minTotal.toString() + amPM;
+    }
     return hourTotal.toString() + ":" + minTotal.toString() + amPM;
   }
+
 
   postReservation(){
     fetch(variables.API_URL+'reservation',{
