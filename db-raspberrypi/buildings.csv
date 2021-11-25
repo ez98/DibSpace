@@ -1,0 +1,10 @@
+building_tag,building_name,address,open_time,close_time,capacity,photo
+CR,"S. R. Crown Hall","3360 South State Street, Chicago, IL 60616",08:00:00.000000,10:00:00.000000,2500,crown-hall.jpg
+GAL,"Galvin Library","3137 S Federal St, Chicago, IL 60616",08:00:00.000000,10:00:00.000000,2500,galvin-library.jpg
+HH,"Herman Hall","3137 S Federal St, Chicago, IL 60616",08:00:00.000000,10:00:00.000000,2500,hh.jpg
+KAP,"Kaplan Institute","3137 S Federal St, Chicago, IL 60616",08:00:00.000000,10:00:00.000000,2500,ki.jpg
+MTCC,"McCormick Tribune Campus Center","3201 S State St, Chicago, IL 60616",08:00:00.000000,10:00:00.000000,3000,mc.jpg
+PH,"Perlstein Hall","10 West 33rd Street, Chicago, IL 60616",08:00:00.000000,10:00:00.000000,2500,perlstein-hall.jpg
+PSC,"Robert A. Pritzker Science Center","3105 S Dearborn St, Chicago, IL 60616",08:00:00.000000,10:00:00.000000,3000,pritzker.jpg
+STU,Stuart,"10 W 31st St, Chicago, IL 60616",08:00:00.000000,10:00:00.000000,1500,sb.jpg
+WH,"Wishnick Hall","3255 South Dearborn Street, Chicago, IL 60616",08:00:00.000000,10:00:00.000000,2500,wishnick.jpg

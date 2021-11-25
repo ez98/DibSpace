@@ -1,0 +1,5 @@
+id,study_space_id,qr_code,seats,table,availabile,room_id_id
+1,SS-87,QXSCV45X,3,1,0,111
+2,SS-54,QXSCV45X,5,1,1,123
+3,SS-12,QXSCV45X,5,1,1,214
+4,SS-10,QXSCV45X,5,1,1,313

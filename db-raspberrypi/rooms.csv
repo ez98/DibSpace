@@ -1,0 +1,5 @@
+room_id,availability,building_tag_id
+111,Availabile,GAL
+123,Availabile,PSC
+214,Occupied,KAP
+313,Available,MTCC
