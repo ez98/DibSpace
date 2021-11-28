@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card, Col, Container, Form, Row} from "react-bootstrap"
 import { variables } from '../Variables.js'
+import ReservationSuccess from "./ReservationSuccess.js";
 
 
 //we need to figure out how to pass in the space information that the user is choosing
@@ -19,8 +20,9 @@ export default class ReserveSpace extends React.Component {
       startAmPm: "",
       durationHour: "",
       durationMinute: "",
-      studentID: []
-    }
+      studentID: [],
+      show: false
+    };
   }
 
   componentDidMount() {
@@ -81,15 +83,22 @@ export default class ReserveSpace extends React.Component {
     })
     .then(res=>res.json())
     .then((result) =>{
-      alert(result + 
-            "\nBuilding: " + this.props.spaceId + 
-            "\nStart Time: " + this.state.startHour + ":" + this.state.startMinute + " " + this.state.startAmPm +
-            "\nEnd Time: " + this.getEndTime(Number(this.state.startHour), Number(this.state.startMinute), Number(this.state.durationHour), Number(this.state.durationMinute), this.state.startAmPm)
-            );
+      // alert(result + 
+      //       "\nBuilding: " + this.props.spaceId + 
+      //       "\nStart Time: " + this.state.startHour + ":" + this.state.startMinute + " " + this.state.startAmPm +
+      //       "\nEnd Time: " + this.getEndTime(Number(this.state.startHour), Number(this.state.startMinute), Number(this.state.durationHour), Number(this.state.durationMinute), this.state.startAmPm)
+      //       );
+      this.showModal();
       this.refreshList( );
     },(error) =>{
       alert(error);
     })
+  }
+
+  showModal() {
+      this.setState({
+        show: true
+      });
   }
 
   handleChange = (event) => {
@@ -105,7 +114,7 @@ export default class ReserveSpace extends React.Component {
         <Row>
           <Col>
             <Card className="mb-3">
-              <Row><Card.Title>Reserve This Space</Card.Title></Row>
+              <Row><Card.Title>Claim This Space</Card.Title></Row>
               <Row>
                 <Col>
                   <Card.Body>
@@ -191,6 +200,13 @@ export default class ReserveSpace extends React.Component {
               </Row>
             </Card>
           </Col>
+        </Row>
+        <Row>
+          <ReservationSuccess 
+            show={this.state.show} 
+            start={this.state.startHour + ":" + this.state.startMinute + " " + this.state.startAmPm} 
+            end={this.getEndTime(Number(this.state.startHour), Number(this.state.startMinute), Number(this.state.durationHour), Number(this.state.durationMinute), this.state.startAmPm)}
+          />
         </Row>
       </Container>
     )
