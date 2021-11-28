@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Dropdown, DropdownButton, ListGroup, Row } from "react-bootstrap";
+import { Button, Col, Container, Dropdown, DropdownButton, Form, FormControl, InputGroup, ListGroup, Row } from "react-bootstrap";
 import SpaceListItem from "./SpaceListItem";
 import { variables } from '../Variables.js'
 
@@ -85,6 +85,16 @@ export default class SpaceList extends React.Component {
       <Container>
         <Row>
           <h2>{this.props.listTitle}</h2>
+        </Row>
+        <Row>
+          <Col xs={12} md={9} lg={6}>
+            <Form>
+              <InputGroup className="mb-3">
+                <FormControl placeholder="Search..."/>
+                <Button id="search-button">Search</Button>
+              </InputGroup>
+            </Form>
+          </Col>
         </Row>
         <Row>
           <Col>
