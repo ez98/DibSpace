@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom';
 import SpaceList from './components/SpaceList';
 import Space from './components/Space';
-
 import logo from './imgs/logo.jpeg'
 
 function App() {
@@ -16,26 +15,10 @@ function App() {
         <p>Find your place to study.</p>
       </div>
       <BrowserRouter>
-      <nav className="navbar navbar-expand-sm bg-light navbar-dark">
-        <ul className = "navbar-nav">
-          <li className = "nav-item m-1">
-            <NavLink className = "btn btn-light btn-outline-primary btn-lg" to = "/find-study-space">
-              Reserve A Room
-            </NavLink>
-          </li> 
-          {/* <li className = "nav-item m-1">
-            <NavLink className = "btn btn-light btn-outline-primary" to = "/space">
-              Space
-            </NavLink>
-          </li> */}
-        </ul>
-      </nav>
-
-      
         <div>
           <Switch>
-            <Route path ='/find-study-space' component ={SpaceList}/>
-            <Route path="/space/:spaceId" component={ Space }/>
+            <Route path ='/welcome' component ={SpaceList}/>
+            <Route path="/space/:spaceId" component={Space}/>
           </Switch>
         </div>
       </BrowserRouter>

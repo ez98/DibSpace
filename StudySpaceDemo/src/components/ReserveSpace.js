@@ -22,6 +22,7 @@ export default class ReserveSpace extends React.Component {
       studentID: []
     }
   }
+
   componentDidMount() {
     this.refreshList();
   }
@@ -41,8 +42,6 @@ export default class ReserveSpace extends React.Component {
       this.setState({studentID:this.parseData(data)})
     });
   }
-
-
 
   getEndTime(hour, min, durationHour, durationMin, amPM){ //fix this function so that it handles when a user chooses 12PM and duration is an hour or greater. Must go to 1PM not 13PM. 
     var hourTotal = hour + durationHour;
@@ -82,14 +81,16 @@ export default class ReserveSpace extends React.Component {
     })
     .then(res=>res.json())
     .then((result) =>{
-      alert(result);
-      this.refreshList();
+      alert(result + 
+            "\nBuilding: " + this.props.spaceId + 
+            "\nStart Time: " + this.state.startHour + ":" + this.state.startMinute + " " + this.state.startAmPm +
+            "\nEnd Time: " + this.getEndTime(Number(this.state.startHour), Number(this.state.startMinute), Number(this.state.durationHour), Number(this.state.durationMinute), this.state.startAmPm)
+            );
+      this.refreshList( );
     },(error) =>{
       alert(error);
     })
   }
-
-
 
   handleChange = (event) => {
     this.state = {
@@ -108,83 +109,83 @@ export default class ReserveSpace extends React.Component {
               <Row>
                 <Col>
                   <Card.Body>
-                        <Form.Group as={Row} className="mb-3">
-                          <Form.Label column sm={3} className="">Start Time</Form.Label>
-                          <Col>
-                            <Row>
-                              <Col xs={4} md={3} lg={2}>
-                              <Form.Group className="mb-3">
-                                <Form.Label>Hour</Form.Label>
-                                <Form.Select name="startHour" onChange={this.handleChange}>
-                                  <option>12</option>
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
-                                  <option>6</option>
-                                  <option>7</option>
-                                  <option>8</option>
-                                  <option>9</option>
-                                  <option>10</option>
-                                  <option>11</option>
-                                </Form.Select>
-                                </Form.Group>
-                              </Col>
-                              <Col xs={4} md={3} lg={2}>
-                                  <Form.Group className="mb-3">
-                                    <Form.Label>Minute</Form.Label>
-                                    <Form.Select name="startMinute" onChange={this.handleChange}>
-                                      <option>00</option>
-                                      <option>15</option>
-                                      <option>30</option>
-                                      <option>45</option>
-                                    </Form.Select>
-                                  </Form.Group>
-                              </Col>
-                              <Col xs={4} md={3} lg={2}>
-                                <Form.Group className="mb-3">
-                                  <Form.Label>AM/PM</Form.Label>
-                                  <Form.Select name="startAmPm" onChange={this.handleChange}>
-                                    <option>AM</option>
-                                    <option>PM</option>
-                                  </Form.Select>
-                                  </Form.Group>
-                              </Col>
-                            </Row>
-                          </Col>
-                        </Form.Group>
-                            
-                        <Form.Group as={Row} className="mb-3">
-                          <Form.Label column sm={3} className="">Study Session Length</Form.Label>
-                            <Col xs={4} md={3} lg={2}>
-                              <Form.Group className="mb-3">
-                                <Form.Label>Hours</Form.Label>
-                                <Form.Select name="durationHour" onChange={this.handleChange}>
-                                  <option>0</option>
-                                  <option>1</option>
-                                  <option>2</option>
-                                </Form.Select>
-                              </Form.Group>
-                            </Col>
+                    <Form.Group as={Row} className="mb-3">
+                      <Form.Label column sm={3} className="">Start Time</Form.Label>
+                      <Col>
+                        <Row>
                           <Col xs={4} md={3} lg={2}>
-                            <Form.Group className="mb-3">
-                              <Form.Label>Minutes</Form.Label>
-                              <Form.Select name="durationMinute" onChange={this.handleChange}>
-                                <option>00</option>
-                                <option>15</option>
-                                <option>30</option>
-                                <option>45</option>
-                              </Form.Select>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Hour</Form.Label>
+                            <Form.Select name="startHour" onChange={this.handleChange}>
+                              <option>12</option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                              <option>7</option>
+                              <option>8</option>
+                              <option>9</option>
+                              <option>10</option>
+                              <option>11</option>
+                            </Form.Select>
                             </Form.Group>
                           </Col>
-                        </Form.Group>
-
+                          <Col xs={4} md={3} lg={2}>
+                              <Form.Group className="mb-3">
+                                <Form.Label>Minute</Form.Label>
+                                <Form.Select name="startMinute" onChange={this.handleChange}>
+                                  <option>00</option>
+                                  <option>15</option>
+                                  <option>30</option>
+                                  <option>45</option>
+                                </Form.Select>
+                              </Form.Group>
+                          </Col>
+                          <Col xs={4} md={3} lg={2}>
+                            <Form.Group className="mb-3">
+                              <Form.Label>AM/PM</Form.Label>
+                              <Form.Select name="startAmPm" onChange={this.handleChange}>
+                                <option>AM</option>
+                                <option>PM</option>
+                              </Form.Select>
+                              </Form.Group>
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Form.Group>
+                        
+                    <Form.Group as={Row} className="mb-3">
+                      <Form.Label column sm={3} className="">Study Session Length</Form.Label>
+                        <Col xs={4} md={3} lg={2}>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Hours</Form.Label>
+                            <Form.Select name="durationHour" onChange={this.handleChange}>
+                              <option>0</option>
+                              <option>1</option>
+                              <option>2</option>
+                            </Form.Select>
+                          </Form.Group>
+                        </Col>
+                      <Col xs={4} md={3} lg={2}>
                         <Form.Group className="mb-3">
-                          <Button variant="primary" type="submit" onClick={()=>this.postReservation()}>
-                            Submit
-                          </Button>
+                          <Form.Label>Minutes</Form.Label>
+                          <Form.Select name="durationMinute" onChange={this.handleChange}>
+                            <option>00</option>
+                            <option>15</option>
+                            <option>30</option>
+                            <option>45</option>
+                          </Form.Select>
                         </Form.Group>
+                      </Col>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3">
+                      <Button variant="primary" type="submit" onClick={()=>this.postReservation()}>
+                        Submit
+                      </Button>
+                    </Form.Group>
                   </Card.Body>
                 </Col>
               </Row>
