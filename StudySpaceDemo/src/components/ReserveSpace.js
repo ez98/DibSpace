@@ -21,7 +21,9 @@ export default class ReserveSpace extends React.Component {
       durationHour: "",
       durationMinute: "",
       studentID: [],
-      show: false
+      show: false,
+      startTime: ":",
+      endTime: ":"
     };
   }
 
@@ -66,6 +68,11 @@ export default class ReserveSpace extends React.Component {
   }
 
   postReservation(){
+
+    this.setState({
+      startTime: this.state.startHour + ":" + this.state.startMinute + " " + this.state.startAmPm,
+      endTime: this.getEndTime(Number(this.state.startHour), Number(this.state.startMinute), Number(this.state.durationHour), Number(this.state.durationMinute), this.state.startAmPm)
+    });
     fetch(variables.API_URL+'reservation',{
       method: 'POST',
       headers:{
@@ -77,8 +84,8 @@ export default class ReserveSpace extends React.Component {
         student_id: this.state.studentID[Math.floor(Math.random() * this.state.studentID.length)], //choosing a random student ID from the DB. This needs to be fixed in such a way that the student ID from the student submitting the reservation is filled in here.
         study_space_id: "SS" + "-" + Math.floor(Math.random() * 90 + 10).toString(), //have to figure out how to pass in the current space id present on the web app when the user presses submit. For now, generating a random space ID.
         //the study space ID can be retrieved if we let the user choose a space ID from their choice of building. Once they choose a space ID, we pass it in here.
-        start_time: this.state.startHour + ":" + this.state.startMinute + " " + this.state.startAmPm,
-        end_time: this.getEndTime(Number(this.state.startHour), Number(this.state.startMinute), Number(this.state.durationHour), Number(this.state.durationMinute), this.state.startAmPm) //calculate end time with the getEndTime function
+        start_time: this.state.startTime,
+        end_time: this.state.endTime //calculate end time with the getEndTime function
       })
     })
     .then(res=>res.json())
@@ -204,8 +211,8 @@ export default class ReserveSpace extends React.Component {
         <Row>
           <ReservationSuccess 
             show={this.state.show} 
-            start={this.state.startHour + ":" + this.state.startMinute + " " + this.state.startAmPm} 
-            end={this.getEndTime(Number(this.state.startHour), Number(this.state.startMinute), Number(this.state.durationHour), Number(this.state.durationMinute), this.state.startAmPm)}
+            start={this.state.startTime}
+            end={this.state.endTime}
           />
         </Row>
       </Container>
