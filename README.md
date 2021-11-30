@@ -7,6 +7,9 @@ Repo for IPRO group.
 ## Mid-Semester Demo Presentation
 [Google Slides](https://docs.google.com/presentation/d/1RdNzrvrdyeWtRgw43NC0CxMxVbY16VE-9N3TC4MJLo0/edit?usp=sharing)
 
+## Final Demo Presentation
+[Google Slides] (https://docs.google.com/presentation/d/1D1US_FY8og1Z0l1P668KJJOv3K7dJz6AiBXqZzKCzdE/edit?usp=sharing)
+
 ## Tools
 
 ### Meeting Availability
